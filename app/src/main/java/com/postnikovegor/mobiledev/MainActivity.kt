@@ -2,6 +2,7 @@ package com.postnikovegor.mobiledev
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -16,6 +17,10 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        val LOG_TAG = MainActivity::javaClass.name
+    }
+
     private val viewModel: MainViewModel by viewModels()
     private val binding by viewBinding(ActivityMainBinding::bind)
 
@@ -23,12 +28,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(LOG_TAG, "onCreate()")
 
         val adapter = setupRecyclerView(binding.usersRecyclerView)
-
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.viewState.collect { viewState ->
+                    Log.d(LOG_TAG, "$viewState")
                     renderViewState(viewState)
                 }
             }
