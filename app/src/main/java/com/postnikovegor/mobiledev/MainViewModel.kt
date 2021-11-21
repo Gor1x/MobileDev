@@ -1,5 +1,6 @@
 package com.postnikovegor.mobiledev
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.squareup.moshi.Moshi
@@ -14,6 +15,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MainViewModel : ViewModel() {
+
+    companion object {
+        val LOG_TAG = MainActivity::javaClass.name
+    }
 
     sealed class ViewState {
         object Loading : ViewState()
@@ -34,6 +39,7 @@ class MainViewModel : ViewModel() {
 
     private suspend fun loadUsers(): List<User> {
         return withContext(Dispatchers.IO) {
+            Log.d(LOG_TAG, "loadUsers()")
             Thread.sleep(1000)
             provideApi().getUsers().data
         }
