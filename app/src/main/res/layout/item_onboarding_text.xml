@@ -4,8 +4,8 @@
     android:id="@+id/textView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:autoSizeTextType="uniform"
     android:gravity="center"
-    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
     android:textColor="@color/black"
     tools:text="Test text">
 

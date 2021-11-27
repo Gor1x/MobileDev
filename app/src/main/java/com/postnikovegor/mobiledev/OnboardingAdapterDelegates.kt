@@ -11,6 +11,7 @@ fun onboardingTextAdapterDelegate() =
         block = {
             bind {
                 binding.textView.text = item
+                binding.textView.maxLines = 2
             }
         }
     )
