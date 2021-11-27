@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
@@ -33,8 +33,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.playerView.player = player
-        viewBinding.viewPager.setTextPages()
-        viewBinding.viewPager.attachDots(viewBinding.onboardingTextTabLayout)
+        setUpViewPager()
 
         viewBinding.signInButton.setOnClickListener {
             // TODO: Go to @SignInFragment
@@ -45,6 +44,26 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             // TODO: Go to @SignUpFragment
             Toast.makeText(requireContext(), "Нажата кнопка зарегистрироваться", Toast.LENGTH_SHORT)
                 .show()
+        }
+    }
+
+    private fun dpToPx(dp: Int): Int =
+        (dp * resources.displayMetrics.density).toInt()
+
+    private fun setUpViewPager() {
+        viewBinding.viewPager.apply {
+            setTextPages()
+            attachDots(viewBinding.onboardingTextTabLayout)
+
+            offscreenPageLimit = 3
+            (getChildAt(0) as RecyclerView).overScrollMode =
+                RecyclerView.OVER_SCROLL_NEVER
+
+            val offsetHorizontal = dpToPx(64)
+            val offsetVertical = dpToPx(8)
+            setPadding(offsetHorizontal, offsetVertical, offsetHorizontal, offsetVertical)
+
+            setPageTransformer(ZoomOutPageTransformer())
         }
     }
 
