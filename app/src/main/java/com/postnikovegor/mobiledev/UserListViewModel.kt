@@ -14,7 +14,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class MainViewModel : ViewModel() {
+class UserListViewModel : ViewModel() {
 
     companion object {
         val LOG_TAG = MainActivity::javaClass.name
