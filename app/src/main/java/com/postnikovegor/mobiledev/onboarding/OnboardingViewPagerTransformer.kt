@@ -1,4 +1,4 @@
-package com.postnikovegor.mobiledev
+package com.postnikovegor.mobiledev.onboarding
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
@@ -8,7 +8,7 @@ private const val MIN_SCALE = 0.9f
 private const val MIN_ALPHA = 0.5f
 private const val WIDTH_CHANGING_COEFFICIENT = 10
 
-class ZoomOutPageTransformer : ViewPager2.PageTransformer {
+class OnboardingViewPagerTransformer : ViewPager2.PageTransformer {
 
     override fun transformPage(view: View, position: Float) {
         view.apply {

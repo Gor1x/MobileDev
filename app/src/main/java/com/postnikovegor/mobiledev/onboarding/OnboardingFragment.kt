@@ -1,39 +1,48 @@
-package com.postnikovegor.mobiledev
+package com.postnikovegor.mobiledev.onboarding
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentOnboardingBinding
+import com.postnikovegor.mobiledev.onboarding.OnboardingViewModel.VideoSoundState
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private val viewBinding by viewBinding(FragmentOnboardingBinding::bind)
 
-    private var player: ExoPlayer? = null
+    private val viewModel: OnboardingViewModel by viewModels()
+
+    private lateinit var player: ExoPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        player = ExoPlayer.Builder(requireContext()).build().apply {
-            addMediaItem(MediaItem.fromUri("asset:///onboarding.mp4"))
-            repeatMode = Player.REPEAT_MODE_ALL
-            prepare()
-        }
+        player = viewModel.getPlayerInstance(requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.playerView.player = player
+        subscribeToSoundState()
         setUpViewPager()
+
+        viewBinding.volumeControlButton.setOnClickListener {
+            viewModel.changeVideoSoundState()
+        }
 
         viewBinding.signInButton.setOnClickListener {
             // TODO: Go to @SignInFragment
@@ -44,6 +53,28 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             // TODO: Go to @SignUpFragment
             Toast.makeText(requireContext(), "Нажата кнопка зарегистрироваться", Toast.LENGTH_SHORT)
                 .show()
+        }
+    }
+
+    private fun subscribeToSoundState() {
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.soundState.collect { state ->
+                    when (state) {
+                        is VideoSoundState.On -> {
+                            viewBinding.volumeControlButton
+                                .setImageResource(R.drawable.ic_volume_up_white_24dp)
+                            player.volume = 1F
+                        }
+                        is VideoSoundState.Off -> {
+                            viewBinding.volumeControlButton
+                                .setImageResource(R.drawable.ic_volume_off_white_24dp)
+                            player.volume = 0F
+
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -63,23 +94,36 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             val offsetVertical = dpToPx(8)
             setPadding(offsetHorizontal, offsetVertical, offsetHorizontal, offsetVertical)
 
-            setPageTransformer(ZoomOutPageTransformer())
+            setPageTransformer(OnboardingViewPagerTransformer())
         }
+
+        viewBinding.viewPager.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    viewModel.notifyPageSelected(position)
+                }
+            }
+        )
+
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.viewPagerPositionFlow.collect { index ->
+                    viewBinding.viewPager.currentItem = index
+                }
+            }
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
-        player?.play()
+        player.play()
     }
 
     override fun onPause() {
         super.onPause()
-        player?.pause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        player?.release()
+        player.pause()
     }
 
     private fun ViewPager2.attachDots(tabLayout: TabLayout) {
