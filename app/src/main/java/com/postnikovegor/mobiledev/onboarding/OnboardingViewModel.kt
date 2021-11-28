@@ -2,10 +2,10 @@ package com.postnikovegor.mobiledev.onboarding
 
 import android.content.Context
 import android.os.CountDownTimer
-import androidx.lifecycle.ViewModel
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
+import com.postnikovegor.mobiledev.BaseViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 private const val VIEWPAGER_TIMEOUT_MS: Long = 4000 // 4 seconds
 private const val VIEW_PAGER_PAGES_COUNT = 3
 
-class OnboardingViewModel : ViewModel() {
+class OnboardingViewModel : BaseViewModel() {
     sealed class VideoSoundState {
         object On : VideoSoundState()
         object Off : VideoSoundState()

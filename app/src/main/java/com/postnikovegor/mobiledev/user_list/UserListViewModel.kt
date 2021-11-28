@@ -1,9 +1,9 @@
 package com.postnikovegor.mobiledev.user_list
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.postnikovegor.mobiledev.Api
+import com.postnikovegor.mobiledev.BaseViewModel
 import com.postnikovegor.mobiledev.MainActivity
 import com.postnikovegor.mobiledev.User
 import com.squareup.moshi.Moshi
@@ -17,7 +17,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class UserListViewModel : ViewModel() {
+class UserListViewModel : BaseViewModel() {
 
     companion object {
         val LOG_TAG = MainActivity::javaClass.name
