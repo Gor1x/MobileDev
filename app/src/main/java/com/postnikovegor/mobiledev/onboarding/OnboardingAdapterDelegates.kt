@@ -1,4 +1,4 @@
-package com.postnikovegor.mobiledev
+package com.postnikovegor.mobiledev.onboarding
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.postnikovegor.mobiledev.databinding.ItemOnboardingTextBinding

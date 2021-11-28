@@ -1,8 +1,11 @@
-package com.postnikovegor.mobiledev
+package com.postnikovegor.mobiledev.user_list
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.postnikovegor.mobiledev.Api
+import com.postnikovegor.mobiledev.MainActivity
+import com.postnikovegor.mobiledev.User
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
