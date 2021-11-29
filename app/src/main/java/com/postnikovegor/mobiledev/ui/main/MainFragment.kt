@@ -1,6 +1,7 @@
 package com.postnikovegor.mobiledev.ui.main
 
 import androidx.fragment.app.viewModels
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentMainBinding
 import com.postnikovegor.mobiledev.ui.base.BaseFragment

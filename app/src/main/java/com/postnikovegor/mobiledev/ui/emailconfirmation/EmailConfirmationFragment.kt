@@ -1,6 +1,7 @@
 package com.postnikovegor.mobiledev.ui.emailconfirmation
 
 import androidx.fragment.app.viewModels
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentEmailConfirmationBinding
 import com.postnikovegor.mobiledev.ui.base.BaseFragment
