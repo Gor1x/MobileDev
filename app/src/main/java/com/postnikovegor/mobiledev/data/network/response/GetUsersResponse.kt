@@ -1,13 +1,8 @@
-package com.postnikovegor.mobiledev
+package com.postnikovegor.mobiledev.data.network.response
 
+import com.postnikovegor.mobiledev.entity.User
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import retrofit2.http.GET
-
-interface Api {
-    @GET("users?page=2")
-    suspend fun getUsers(): GetUsersResponse
-}
 
 @JsonClass(generateAdapter = true)
 data class GetUsersResponse(

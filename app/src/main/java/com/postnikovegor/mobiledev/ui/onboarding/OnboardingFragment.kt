@@ -1,4 +1,4 @@
-package com.postnikovegor.mobiledev.onboarding
+package com.postnikovegor.mobiledev.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
@@ -14,10 +14,11 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.postnikovegor.mobiledev.BaseFragment
 import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentOnboardingBinding
-import com.postnikovegor.mobiledev.onboarding.OnboardingViewModel.VideoSoundState
+import com.postnikovegor.mobiledev.onboarding.onboardingTextAdapterDelegate
+import com.postnikovegor.mobiledev.ui.base.BaseFragment
+import com.postnikovegor.mobiledev.ui.onboarding.OnboardingViewModel.VideoSoundState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

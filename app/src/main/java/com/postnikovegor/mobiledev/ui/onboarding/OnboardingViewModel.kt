@@ -1,11 +1,11 @@
-package com.postnikovegor.mobiledev.onboarding
+package com.postnikovegor.mobiledev.ui.onboarding
 
 import android.content.Context
 import android.os.CountDownTimer
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
-import com.postnikovegor.mobiledev.BaseViewModel
+import com.postnikovegor.mobiledev.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

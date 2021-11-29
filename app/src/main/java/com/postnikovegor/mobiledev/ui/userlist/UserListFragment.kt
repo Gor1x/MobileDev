@@ -1,4 +1,4 @@
-package com.postnikovegor.mobiledev.user_list
+package com.postnikovegor.mobiledev.ui.userlist
 
 import android.os.Bundle
 import android.view.View
@@ -9,10 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.postnikovegor.mobiledev.BaseFragment
 import com.postnikovegor.mobiledev.R
-import com.postnikovegor.mobiledev.UserAdapter
 import com.postnikovegor.mobiledev.databinding.FragmentUserListBinding
+import com.postnikovegor.mobiledev.ui.base.BaseFragment
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

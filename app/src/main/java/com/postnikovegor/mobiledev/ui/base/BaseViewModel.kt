@@ -1,4 +1,4 @@
-package com.postnikovegor.mobiledev
+package com.postnikovegor.mobiledev.ui.base
 
 import androidx.lifecycle.ViewModel
 
