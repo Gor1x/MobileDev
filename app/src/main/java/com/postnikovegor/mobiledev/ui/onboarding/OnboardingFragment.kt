@@ -1,9 +1,8 @@
-package com.postnikovegor.mobiledev.onboarding
+package com.postnikovegor.mobiledev.ui.onboarding
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -17,11 +16,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentOnboardingBinding
-import com.postnikovegor.mobiledev.onboarding.OnboardingViewModel.VideoSoundState
+import com.postnikovegor.mobiledev.onboarding.onboardingTextAdapterDelegate
+import com.postnikovegor.mobiledev.ui.base.BaseFragment
+import com.postnikovegor.mobiledev.ui.onboarding.OnboardingViewModel.VideoSoundState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
+class OnboardingFragment : BaseFragment(R.layout.fragment_onboarding) {
 
     private val viewBinding by viewBinding(FragmentOnboardingBinding::bind)
 

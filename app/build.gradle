@@ -80,4 +80,12 @@ dependencies {
     def adapterDelegatesVersion = '4.3.1'
     implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:$adapterDelegatesVersion"
     implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:$adapterDelegatesVersion"
+
+    // Logger.
+    implementation "com.jakewharton.timber:timber:4.7.1"
+
+    // Navigation.
+    def navigationVersion = "2.4.0-beta02"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 }

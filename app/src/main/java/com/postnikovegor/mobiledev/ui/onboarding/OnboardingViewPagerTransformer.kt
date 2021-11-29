@@ -1,4 +1,4 @@
-package com.postnikovegor.mobiledev.onboarding
+package com.postnikovegor.mobiledev.ui.onboarding
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

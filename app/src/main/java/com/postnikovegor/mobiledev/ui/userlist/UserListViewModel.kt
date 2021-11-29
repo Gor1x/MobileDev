@@ -1,11 +1,11 @@
-package com.postnikovegor.mobiledev.user_list
+package com.postnikovegor.mobiledev.ui.userlist
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.postnikovegor.mobiledev.Api
-import com.postnikovegor.mobiledev.MainActivity
-import com.postnikovegor.mobiledev.User
+import com.postnikovegor.mobiledev.data.network.Api
+import com.postnikovegor.mobiledev.entity.User
+import com.postnikovegor.mobiledev.ui.MainActivity
+import com.postnikovegor.mobiledev.ui.base.BaseViewModel
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +17,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class UserListViewModel : ViewModel() {
+class UserListViewModel : BaseViewModel() {
 
     companion object {
         val LOG_TAG = MainActivity::javaClass.name
