@@ -1,6 +1,5 @@
 package com.postnikovegor.mobiledev.ui.userlist
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.postnikovegor.mobiledev.data.network.Api
 import com.postnikovegor.mobiledev.entity.User
@@ -26,6 +25,8 @@ class UserListViewModel : BaseViewModel() {
     sealed class ViewState {
         object Loading : ViewState()
         data class Data(val userList: List<User>) : ViewState()
+        data class Failure(val exception: Throwable) : ViewState()
+        object EmptyList : ViewState()
     }
 
     private val _viewState = MutableStateFlow<ViewState>(ViewState.Loading)
@@ -33,18 +34,34 @@ class UserListViewModel : BaseViewModel() {
         get() = _viewState.asStateFlow()
 
     init {
+        tryToLoadUsers()
+    }
+
+    fun tryToLoadUsers() {
         viewModelScope.launch {
             _viewState.emit(ViewState.Loading)
-            val users = loadUsers()
-            _viewState.emit(ViewState.Data(users))
+            val usersResponse = sendLoadUsersRequest()
+            val stateToEmit = usersResponse.fold(
+                onSuccess = {
+                    if (it.isEmpty())
+                        ViewState.EmptyList
+                    else
+                        ViewState.Data(it)
+                },
+                onFailure = {
+                    ViewState.Failure(it)
+                }
+            )
+            _viewState.emit(stateToEmit)
         }
     }
 
-    private suspend fun loadUsers(): List<User> {
+    private suspend fun sendLoadUsersRequest(): Result<List<User>> {
         return withContext(Dispatchers.IO) {
-            Log.d(LOG_TAG, "loadUsers()")
-            Thread.sleep(1000)
-            provideApi().getUsers().data
+            runCatching {
+                Thread.sleep(200)
+                provideApi().getUsers().data
+            }
         }
     }
 

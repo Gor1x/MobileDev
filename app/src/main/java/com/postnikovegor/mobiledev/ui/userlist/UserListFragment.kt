@@ -25,6 +25,14 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
         super.onCreate(savedInstanceState)
         setupRecyclerView(viewBinding.usersRecyclerView)
         subscribeToViewState()
+
+        viewBinding.exceptionLayoutTryAgainButton.setOnClickListener {
+            viewModel.tryToLoadUsers()
+        }
+
+        viewBinding.userListPullToRefreshLayout.setOnRefreshListener {
+            viewModel.tryToLoadUsers()
+        }
     }
 
     private fun subscribeToViewState() {
@@ -36,6 +44,15 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
     }
 
     private fun renderViewState(viewState: UserListViewModel.ViewState) {
+        with(viewBinding) {
+            listOf(usersRecyclerView, progressBar, retryLayout)
+        }.forEach {
+            it.isVisible = false
+        }
+
+        viewBinding.userListPullToRefreshLayout.isEnabled = false
+        viewBinding.userListPullToRefreshLayout.isRefreshing = false
+
         when (viewState) {
             is UserListViewModel.ViewState.Data -> {
                 (viewBinding.usersRecyclerView.adapter as UserAdapter).apply {
@@ -43,11 +60,20 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
                     notifyDataSetChanged()
                 }
                 viewBinding.usersRecyclerView.isVisible = true
-                viewBinding.progressBar.isVisible = false
+                viewBinding.userListPullToRefreshLayout.isEnabled = true
             }
             is UserListViewModel.ViewState.Loading -> {
-                viewBinding.usersRecyclerView.isVisible = false
-                viewBinding.progressBar.isVisible = true
+                viewBinding.userListPullToRefreshLayout.isRefreshing = true
+            }
+            is UserListViewModel.ViewState.EmptyList -> {
+                viewBinding.retryLayout.isVisible = true
+                viewBinding.tryAgainDescriptionText.text =
+                    resources.getString(R.string.user_list_description_empty_list)
+            }
+            is UserListViewModel.ViewState.Failure -> {
+                viewBinding.retryLayout.isVisible = true
+                viewBinding.tryAgainDescriptionText.text =
+                    resources.getString(R.string.user_list_description_downloading_failed)
             }
         }
     }
