@@ -10,4 +10,7 @@
     <string name="bottom_navigation_title_likes">Лайки</string>
     <string name="bottom_navigation_title_bookmarks">Закладки</string>
     <string name="bottom_navigation_title_profile">Профиль</string>
+    <string name="user_list_user_downloading_failed_text_view_text">Ошибка загрузки. Проверьте подключение к сети и повторите попытку</string>
+    <string name="user_list_user_downloading_failed_button_text">Попробовать снова</string>
+    <string name="user_list_empty_text_view_text">Еще не было добавлено ни одного пользователя :(</string>
 </resources>

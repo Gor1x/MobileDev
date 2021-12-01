@@ -25,6 +25,10 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
         super.onCreate(savedInstanceState)
         setupRecyclerView(viewBinding.usersRecyclerView)
         subscribeToViewState()
+
+        viewBinding.exceptionLayoutTryAgainButton.setOnClickListener {
+            viewModel.tryToLoadUsers()
+        }
     }
 
     private fun subscribeToViewState() {
@@ -36,6 +40,12 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
     }
 
     private fun renderViewState(viewState: UserListViewModel.ViewState) {
+        with(viewBinding) {
+            listOf(usersRecyclerView, progressBar, exceptionLayout, emptyUserListMessage)
+        }.forEach {
+            it.isVisible = false
+        }
+
         when (viewState) {
             is UserListViewModel.ViewState.Data -> {
                 (viewBinding.usersRecyclerView.adapter as UserAdapter).apply {
@@ -43,11 +53,15 @@ class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
                     notifyDataSetChanged()
                 }
                 viewBinding.usersRecyclerView.isVisible = true
-                viewBinding.progressBar.isVisible = false
             }
             is UserListViewModel.ViewState.Loading -> {
-                viewBinding.usersRecyclerView.isVisible = false
                 viewBinding.progressBar.isVisible = true
+            }
+            is UserListViewModel.ViewState.EmptyList -> {
+                viewBinding.emptyUserListMessage.isVisible = true
+            }
+            is UserListViewModel.ViewState.Failure -> {
+                viewBinding.exceptionLayout.isVisible = true
             }
         }
     }
