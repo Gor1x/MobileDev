@@ -1,17 +1,39 @@
 <resources>
+    <string name="common_back_alert_dialog_text">Введенные данные пропадут</string>
+    <string name="common_back_alert_dialog_cancel_button_text">Отменить</string>
+    <string name="common_back_alert_dialog_confirm_button_text">Подтвердить</string>
+
     <string name="app_name">MobileDev</string>
     <string name="onboarding_view_pager_text_1">Осень 2021 г. СПбГУ</string>
     <string name="onboarding_view_pager_text_2">Мы изучаем разработку под Android</string>
     <string name="onboarding_view_pager_text_3">Добро пожаловать в команду!</string>
     <string name="onboarding_sign_in_button_text">Войти</string>
     <string name="onboarding_sign_up_button_text">Зарегистрироваться</string>
+
     <string name="bottom_navigation_title_news">Лента</string>
     <string name="bottom_navigation_title_people">Люди</string>
     <string name="bottom_navigation_title_likes">Лайки</string>
     <string name="bottom_navigation_title_bookmarks">Закладки</string>
     <string name="bottom_navigation_title_profile">Профиль</string>
-    <string name="sign_in_sign_in_button_text">Войти</string>
+
     <string name="user_list_description_downloading_failed">Ошибка загрузки. Проверьте подключение к сети и повторите попытку</string>
     <string name="user_list_user_downloading_failed_button_text">Повторить попытку</string>
     <string name="user_list_description_empty_list">Еще не было добавлено ни одного пользователя :(</string>
+
+    <string name="sign_in_sign_in_button_text">Войти</string>
+    <string name="sign_in_email_text_layout_hing">Почта</string>
+    <string name="sign_in_password_text_layout_hing">Пароль</string>
+    <string name="sign_in_password_text_layout_hint">Пароль</string>
+    <string name="sign_in_email_text_layout_hint">Почта</string>
+
+    <string name="sign_up_club_rules">правила клуба</string>
+    <string name="sign_up_terms_and_conditions_template">Я принимаю %s</string>
+    <string name="sign_up_firstname_text_layout_hint">Имя</string>
+    <string name="sign_up_lastname_text_layout_hint">Фамилия</string>
+    <string name="sign_up_nickname_text_layout_hint">Логин</string>
+    <string name="sign_up_under_nickname_text">Другие пользователи увидят выбранный вами логин</string>
+    <string name="sign_up_under_email_text">Мы отправим код подтверждения</string>
+    <string name="sign_up_sign_up_button_text">Зарегистрироваться</string>
+    <string name="sign_up_password_text_layout_hint">Пароль</string>
+    <string name="sign_up_email_text_layout_hint">Почта</string>
 </resources>
