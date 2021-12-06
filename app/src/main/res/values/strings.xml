@@ -8,7 +8,7 @@
     <string name="onboarding_view_pager_text_2">Мы изучаем разработку под Android</string>
     <string name="onboarding_view_pager_text_3">Добро пожаловать в команду!</string>
     <string name="onboarding_sign_in_button_text">Войти</string>
-    <string name="onboarding_sign_up_button_text">Зарегистрироваться</string>
+    <string name="onboarding_sign_up_button_text">Регистрация</string>
 
     <string name="bottom_navigation_title_news">Лента</string>
     <string name="bottom_navigation_title_people">Люди</string>
