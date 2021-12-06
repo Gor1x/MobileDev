@@ -10,13 +10,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.postnikovegor.mobiledev.ui.emailconfirmation.VerificationCodeEditText
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/verificationCodeInformationTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/confirmation_input_text_to_field_description"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/backButton"
-        app:vcet_numberOfSlots="5" />
+        app:layout_constraintVertical_bias="0.2" />
 
+    <com.postnikovegor.mobiledev.ui.emailconfirmation.VerificationCodeEditText
+        android:id="@+id/verificationCodeView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/verificationCodeInformationTextView"
+        app:vcet_numberOfSlots="6" />
+
+    <Button
+        android:id="@+id/repeatCodeButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/confirmation_resend_button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/verificationCodeView" />
+
+    <TextView
+        android:id="@+id/repeatCodeTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repeatCodeButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

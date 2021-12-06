@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/parentConstraintLayout"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
@@ -10,13 +10,13 @@
     <EditText
         android:id="@+id/realVerificationCodeEditText"
         android:layout_width="0dp"
-        android:imeOptions="flagNoExtractUi"
         android:layout_height="@dimen/verification_code_slot_height"
         android:background="@null"
         android:cursorVisible="false"
+        android:digits="0123456789"
+        android:imeOptions="flagNoExtractUi"
         android:importantForAutofill="no"
         android:inputType="numberPassword"
-        android:digits="0123456789"
         android:lines="1"
         android:longClickable="false"
         android:textColor="@android:color/transparent"
@@ -27,7 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnusedAttribute"
-        tools:text="12345" />
+        tools:ignore="UnusedAttribute" />
 
 </merge>

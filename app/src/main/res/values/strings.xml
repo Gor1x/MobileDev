@@ -36,4 +36,6 @@
     <string name="sign_up_sign_up_button_text">Зарегистрироваться</string>
     <string name="sign_up_password_text_layout_hint">Пароль</string>
     <string name="sign_up_email_text_layout_hint">Почта</string>
+    <string name="confirmation_resend_button_text">Отправить код повторно</string>
+    <string name="confirmation_input_text_to_field_description">Введите код подтверждения в поле ниже</string>
 </resources>
