@@ -25,9 +25,11 @@ import com.postnikovegor.mobiledev.entity.UserRegistrationData
 import com.postnikovegor.mobiledev.ui.base.BaseFragment
 import com.postnikovegor.mobiledev.util.getSpannedString
 import com.postnikovegor.mobiledev.util.getString
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
     private val viewModel: SignUpViewModel by viewModels()
     private val viewBinding by viewBinding(FragmentSignUpBinding::bind)

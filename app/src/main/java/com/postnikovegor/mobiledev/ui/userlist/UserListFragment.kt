@@ -12,9 +12,11 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentUserListBinding
 import com.postnikovegor.mobiledev.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class UserListFragment : BaseFragment(R.layout.fragment_user_list) {
 
     private val viewBinding by viewBinding(FragmentUserListBinding::bind)

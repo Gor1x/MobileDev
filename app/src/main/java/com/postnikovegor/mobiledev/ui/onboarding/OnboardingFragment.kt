@@ -19,10 +19,12 @@ import com.postnikovegor.mobiledev.databinding.FragmentOnboardingBinding
 import com.postnikovegor.mobiledev.onboarding.onboardingTextAdapterDelegate
 import com.postnikovegor.mobiledev.ui.base.BaseFragment
 import com.postnikovegor.mobiledev.ui.onboarding.OnboardingViewModel.VideoSoundState
+import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applyInsetter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class OnboardingFragment : BaseFragment(R.layout.fragment_onboarding) {
 
     private val viewBinding by viewBinding(FragmentOnboardingBinding::bind)

@@ -9,7 +9,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentMainBinding
 import com.postnikovegor.mobiledev.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment(R.layout.fragment_main) {
 
     private val viewBinding by viewBinding(FragmentMainBinding::bind)

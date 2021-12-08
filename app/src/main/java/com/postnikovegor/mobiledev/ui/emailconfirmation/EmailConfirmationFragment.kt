@@ -13,12 +13,16 @@ import com.postnikovegor.mobiledev.R
 import com.postnikovegor.mobiledev.databinding.FragmentEmailConfirmationBinding
 import com.postnikovegor.mobiledev.ui.base.BaseFragment
 import com.postnikovegor.mobiledev.ui.emailconfirmation.EmailConfirmationViewModel.ResendButtonState
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class EmailConfirmationFragment : BaseFragment(R.layout.fragment_email_confirmation) {
+@AndroidEntryPoint
+class EmailConfirmationFragment @Inject constructor() :
+    BaseFragment(R.layout.fragment_email_confirmation) {
 
     private val viewBinding by viewBinding(FragmentEmailConfirmationBinding::bind)
 
