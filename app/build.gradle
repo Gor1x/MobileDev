@@ -5,6 +5,9 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin'
+
 android {
     viewBinding {
         enabled = true
@@ -70,6 +73,12 @@ android {
         variant.outputs.all { output ->
             outputFileName = "PostnikovEgor-${variant.versionName}-${variant.buildType.name}.apk"
         }
+    }
+}
+
+kapt {
+    javacOptions {
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
     }
 }
 
