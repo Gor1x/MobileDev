@@ -4,11 +4,14 @@ import android.os.CountDownTimer
 import com.postnikovegor.mobiledev.ui.base.BaseViewModel
 import com.postnikovegor.mobiledev.ui.emailconfirmation.EmailConfirmationViewModel.ResendButtonState.Enabled
 import com.postnikovegor.mobiledev.ui.emailconfirmation.EmailConfirmationViewModel.ResendButtonState.TimerTicking
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class EmailConfirmationViewModel : BaseViewModel() {
+@HiltViewModel
+class EmailConfirmationViewModel @Inject constructor() : BaseViewModel() {
 
     sealed class ResendButtonState {
         object Enabled : ResendButtonState()

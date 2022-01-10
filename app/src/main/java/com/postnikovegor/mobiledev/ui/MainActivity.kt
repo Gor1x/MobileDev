@@ -9,9 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.postnikovegor.mobiledev.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val viewModel: MainViewModel by viewModels()
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun subscribeToAuthorizationStatus() {
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.isAuthorizedFlow.collect {
+                viewModel.isAuthorizedFlow().collect {
                     showSuitableNavigationFlow(it)
                 }
             }
